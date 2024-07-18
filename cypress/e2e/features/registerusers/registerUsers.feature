@@ -12,7 +12,7 @@ Scenario: create user account with correct personal informations on Edisac websi
 
 When I verify that EDISAC page authentications is visible 
 And I verify that nouveau client Nouveau client is visible on EDISAC page
-When I fill the email address sabineboudillbenllnn2oknjHb1yjndgljbbnh9onp4@outlook.fr on the create account section EDISAC page
+When I fill the email address sabineboudillbenllnn2oknjhtrHb1yjndgljbbnh9onp4@outlook.fr on the create account section EDISAC page
 #And I click create account button in EDISAC page
 When I verify that I m on Je crée mon compte EDISAC page 
 And I verify that the text Je crée mon compte Edisac website is visible
