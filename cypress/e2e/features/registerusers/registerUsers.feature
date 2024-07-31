@@ -12,7 +12,7 @@ Scenario: create user account with correct personal informations on Edisac websi
 
 When I verify that EDISAC page authentications is visible 
 And I verify that nouveau client Nouveau client is visible on EDISAC page
-When I fill the email address sabiineboudinllbenllbhynnn2oknjhtrHb1yjndgljbbnh9onp4@outlook.fr on the create account section EDISAC page
+When I fill the email address on the create account section EDISAC page
 #And I click create account button in EDISAC page
 When I verify that I m on Je crée mon compte EDISAC page 
 And I verify that the text Je crée mon compte Edisac website is visible
@@ -52,11 +52,10 @@ When I fill the email address <Email> on the create account section EDISAC page
 #And I click create account button in EDISAC page
 Then under the fields <Fields> I should see the messsage error <ErrorMessage> 
 Examples:  
-      | Email                        | Fields           | ErrorMessage|
-      | sabine.boudjellalgmail.com   | EmailInvalid     |            |                
-      | sabine.boudjellal1@gmail.com | EmailDejaUtilisé |            |         
-      | {BACKSPACE}                  | EmailVide        |            |    
-
+      | Email                        | Fields           | ErrorMessage |
+      | sabine.boudjellalgmail.com   | EmailInvalid     |              |                
+      | sabine.boudjellal1@gmail.com | EmailDejaUtilisé |              |         
+      | {BACKSPACE}                  | EmailVide        |              |    
 
       #                                                   L'adresse email n'est pas correcte           |
       #| sabine.boudjellal1@gmail.com | EmailDejaUtilisé |Un compte associé à cette adresse existe déjà|

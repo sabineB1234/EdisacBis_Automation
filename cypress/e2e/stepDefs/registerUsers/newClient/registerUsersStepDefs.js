@@ -28,8 +28,8 @@ And (/^I verify that nouveau client (.*) is visible on EDISAC page/,(dejavutext)
   registerUserActions.verifyTextsVisibleDejaVu (dejavutext);
 });
 
-When (/^I fill the email address (.*) on the create account section EDISAC page/,(Email) => {
-  registerUserActions.fillCreateAccountEmail(Email);
+When (/^I fill the email address on the create account section EDISAC page/,() => {
+  registerUserActions.fillCreateAccountEmail();
 });
 
 And(/^I click create account button in EDISAC page/,() => {
@@ -92,7 +92,7 @@ And (/^I fill the supply registration informations form on EDISAC create page wi
   cy.log('City:', details.City);
   cy.log('Address:', details.Address);
   cy.log('Address2:', details.Address2);
-  cy.log('HomePhone:', details.AHomePhone);
+  cy.log('HomePhone:', details.HomePhone);
   cy.log('MobilePhone:', details.MobilePhone);
   registerUserActions.fillRegistrationDetails(details.Zipcode, details.City, details.Address, details.Address2, details.HomePhone, details.MobilePhone);
 });
@@ -119,6 +119,10 @@ And (/^I verify the statue (.*) on EDISAC create page/,(expectedStatus) => {
 
 Then (/^I Click on sign out button/,() => {
   registerUserActions.clickSignOutButton();
+});
+
+ When (/^I fill the email address (.*) on the create account section EDISAC page/,(Email) => {
+  registerUserActions.fillCreateAnAccountEmail(Email);
 });
 
 Then (/^under the fields (.*) I should see the messsage error (.*)/,(Fields ,ErrorMessage) => {

@@ -23,7 +23,6 @@ export class registerUserActions {
 
   VerifyVisibilyPageAuthentification() {
       cy.wait(8000);
-      
       cy.title().then((title) => {
       cy.log('The title of the page is: ' + title);
       cy.url().should('include', '/login');
@@ -41,8 +40,11 @@ export class registerUserActions {
       });
   }
 
-  fillCreateAccountEmail(Email) {
-    cy.get(selectorsRegistersUser.InputEmail).type(Email)// Remplacez par le sélecteur correct
+  fillCreateAccountEmail() {
+    const Email = randomEmail();
+    cy.get(selectorsRegistersUser.InputEmail).type(Email, { parseSpecialCharSequences: false })// Remplacez par le sélecteur correct
+    cy.log('Generated Email: ', Email);
+    cy.get(selectorsRegistersUser.InputEmail)
     .trigger('mouseover');
     cy.get(selectorsRegistersUser.ButtonValidate, { timeout: 10000 })
     .click({ force: true });
@@ -139,7 +141,10 @@ export class registerUserActions {
   }
 
   clickRegisterButton() {
+    cy.screenshot('before-click'); 
     cy.get(selectorsRegistersUser.InputValidate).click(); 
+    cy.screenshot('after-click');
+    
   }
 
   clickMyAccountButton() {
@@ -159,7 +164,15 @@ export class registerUserActions {
     cy.wait(4000);
   }
 
-
+  fillCreateAnAccountEmail(Email) {
+   
+    cy.get(selectorsRegistersUser.InputEmail).type(Email, { parseSpecialCharSequences: false })// Remplacez par le sélecteur correct
+    cy.log('Generated Email: ', Email);
+    cy.get(selectorsRegistersUser.InputEmail)
+    .trigger('mouseover');
+    cy.get(selectorsRegistersUser.ButtonValidate, { timeout: 10000 })
+    .click({ force: true });
+  }
 verifyErrorMessage(Fields ,ErrorMessage){
   cy.wait(8000);
   const field = Fields.toString();
@@ -194,3 +207,8 @@ verifyErrorMessage(Fields ,ErrorMessage){
 }
 }
 export default new registerUserActions()
+function randomEmail() {
+  const timestamp = Date.now();
+  const randomValue = Math.floor(Math.random() * 10000);
+  return `user${timestamp}${randomValue}@example.com`; // Utilisez un domaine de test valide
+}
